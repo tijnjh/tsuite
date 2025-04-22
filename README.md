@@ -1,5 +1,10 @@
 # tsuite
 
+## /swiːt/ &mdash; _suite_
+
+> **noun**  
+> _a number of things forming a series or set._
+
 A collection of useful utility functions, All fully typed
 
 [![npm version](https://img.shields.io/npm/v/tsuite.svg)](https://npmjs.com/package/tsuite)
