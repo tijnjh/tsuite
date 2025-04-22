@@ -19,6 +19,50 @@ npm i tsuite
 
 ---
 
+## Usage
+
+### In Node.js / Modern Bundlers
+
+Import individual utilities for optimal tree-shaking:
+
+```typescript
+// TypeScript or modern JavaScript
+import { tryCatch, getElementsById } from "tsuite";
+
+const [result, error] = tryCatch(() => JSON.parse('{"ok":1}'));
+```
+
+Or import the whole library (not recommended for tree-shaking):
+
+```typescript
+import * as tsuite from "tsuite";
+```
+
+---
+
+### In the Browser (UMD build)
+
+Include the bundle via a CDN or your local `node_modules`:
+
+```html
+<!-- From node_modules -->
+<script src="/node_modules/tsuite/dist/bundle.js"></script>
+<!-- Or from CDN -->
+<script src="https://unpkg.com/tsuite/dist/bundle.js"></script>
+```
+
+Now access utilities from the global `tsuite` object:
+
+```html
+<script>
+  const { elFoo, elBar } = tsuite.getElementsById("foo", "bar");
+  // Use elFoo, elBar...
+</script>
+```
+
+---
+
+
 ## API
 
 ### getElementsById
