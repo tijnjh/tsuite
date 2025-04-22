@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "outDir": "./dist",
+    "emitDeclarationOnly": false,
+    "lib": ["dom", "es2015"] 
+  },
+  "include": ["src"]
+}
