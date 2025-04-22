@@ -50,7 +50,7 @@ export default function <const T extends readonly string[]>(
         .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
         .join("");
     elements[prop as keyof Elements<T>] = document.getElementById(
-      query
+      query,
     ) as Elements<T>[keyof Elements<T>];
   }
   return elements;

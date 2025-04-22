@@ -26,7 +26,7 @@
 export default function (
   imageElement: HTMLImageElement,
   src: string,
-  fallback: Function | string
+  fallback: Function | string,
 ) {
   fetch(src)
     .then((response) => {
