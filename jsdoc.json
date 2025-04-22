@@ -1,0 +1,10 @@
+{
+  "source": {
+    "include": ["src"]
+  },
+  "opts": {
+    "destination": "out",
+    "recurse": true,
+    "template": "default"
+  }
+}
