@@ -18,6 +18,11 @@ jobs:
           version: 8
       - run: pnpm install
       - run: pnpm run build
+      - name: Upload dist
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
 
   publish-npm:
     needs: build
@@ -32,6 +37,11 @@ jobs:
         with:
           version: 8
       - run: pnpm install
+      - name: Download dist
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
       - run: pnpm publish --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.npm_token }}
