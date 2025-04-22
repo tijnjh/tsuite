@@ -4,7 +4,8 @@
   "description": "A collection of useful utility functions, All fully typed ",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc && rollup -c"
+    "build": "tsc && rollup -c",
+    "fmt": "pnpm dlx prettier --write ."
   },
   "keywords": [],
   "author": "tijnjh",
