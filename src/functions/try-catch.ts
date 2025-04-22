@@ -41,8 +41,12 @@
  *   }
  * });
  */
+export default function <T, E = Error>(fn: () => T): [T | null, E | null];
 export default function <T, E = Error>(
-  input: (() => T) | Promise<T>
+  promise: Promise<T>,
+): Promise<[T | null, E | null]>;
+export default function <T, E = Error>(
+  input: (() => T) | Promise<T>,
 ): Promise<[T | null, E | null]> | [T | null, E | null] {
   if (typeof input === "function") {
     try {
