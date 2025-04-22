@@ -4,14 +4,16 @@
   "description": "A collection of useful utility functions, All fully typed ",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc && rollup -c"
   },
   "keywords": [],
   "author": "tijnjh",
   "license": "ISC",
   "packageManager": "pnpm@10.8.1",
-  "dependencies": {},
   "devDependencies": {
+    "@rollup/plugin-typescript": "^12.1.2",
+    "rollup": "^4.40.0",
+    "tslib": "^2.8.1",
     "typescript": "^5.8.3"
   }
 }
