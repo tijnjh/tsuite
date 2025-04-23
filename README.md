@@ -192,6 +192,36 @@ const [result, error] = await tryCatch(fetch("/api/data"));
 
 ---
 
+### toast
+
+<details>
+<summary>Click to view</summary>
+
+Displays a toast notification in the browser with a given message.
+On non-browser environments, falls back to console.log.
+
+#### **Signature**
+
+```typescript
+toast(message?: any): void
+```
+
+#### **Example**
+
+```typescript
+import { toast } from "tsuite";
+
+// Display a simple message
+toast("Hello World!");
+
+// Display an object
+toast({ status: "success", message: "Operation completed" });
+```
+
+</details>
+
+---
+
 ## Contributing
 
 If you have a utility you think fits tsuite, feel free to open an issue or pull request.
