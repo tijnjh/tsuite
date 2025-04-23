@@ -23,12 +23,18 @@ export default defineConfig([
     dts: true,
     entry: ["src/index.ts"],
     format: ["cjs", "esm", "iife"],
+    globalName: "tsuite",
+    minify: true,
     sourcemap: true,
+    clean: true,
   },
   {
     dts: true,
     entry: functionEntries,
     format: ["cjs", "esm", "iife"],
+    globalName: "tsuite",
     sourcemap: true,
+    minify: true,
+    clean: true,
   },
 ]);

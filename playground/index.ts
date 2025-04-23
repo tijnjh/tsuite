@@ -1,1 +1,1 @@
-import * as tsuite from "../src";
+import * as tsuite from "../dist";
