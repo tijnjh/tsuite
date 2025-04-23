@@ -20,7 +20,7 @@ if (isBrowser() && typeof customElements !== "undefined") {
             box-shadow: 0 2px 12px rgba(0,0,0,0.2);
             font-family: system-ui;
             cursor: pointer;
-            max-width: min(calc(100% - 2rem), 45rem);
+            width: min(calc(100% - 2rem), 45rem);
             overflow: hidden;
             overflow-wrap: break-word;
             transition: opacity .256s ease, transform .256s ease;

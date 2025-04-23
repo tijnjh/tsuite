@@ -1,7 +1,7 @@
 {
   "name": "tsuite",
   "description": "A collection of useful utility functions, All fully typed and documented",
-  "version": "0.0.3-6",
+  "version": "0.0.3-7",
   "main": "dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
