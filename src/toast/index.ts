@@ -7,36 +7,37 @@ if (isBrowser() && typeof customElements !== "undefined") {
       this.attachShadow({ mode: "open" });
       this.shadowRoot!.innerHTML = `
         <style>
-          :host { z-index:9999; pointer-events:none; }
+          :host { z-index: 9999; pointer-events: none; }
           .toast {
-            box-sizing:border-box;
-            position:fixed;
-            left:50%;
-            transform:translateX(-50%);
-            top:1rem;
-            background:white;
-            padding:1rem 1.5rem;
-            border-radius:1rem;
-            box-shadow:0 2px 12px rgba(0,0,0,0.2);
-            font-family:system-ui;
-            cursor:pointer;
-            max-width:calc(100% - 2rem);
-            overflow:hidden;
-            overflow-wrap:break-word;
-            transition:opacity .256s ease, transform .256s ease;
-            opacity:0;
-            transform:translateY(-6rem);
+            box-sizing: border-box;
+            position: fixed;
+            margin: 0 auto;
+            left: 50%;
+            translate: -50% 0 ;
+            top: 1rem;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+            font-family: system-ui;
+            cursor: pointer;
+            max-width: min(calc(100% - 2rem), 30rem);
+            overflow: hidden;
+            overflow-wrap: break-word;
+            transition: opacity .256s ease, transform .256s ease;
+            opacity: 0;
+            transform: translateY(-6rem);
           }
           .toast.animate-in {
-            opacity:1;
-            transform:translateY(0);
+            opacity: 1;
+            transform: translateY(0);
           }
           .toast.animate-out {
-            opacity:0;
-            transform:translateY(-6rem);
+            opacity: 0;
+            transform: translateY(-6rem);
           }
           @media (prefers-color-scheme: dark) {
-            .toast { background:#222; color:#fff; }
+            .toast { background: #222; color: #fff; }
           }
         </style>
       `;
