@@ -38,7 +38,7 @@ type Elements<T extends readonly string[]> = {
  * // els.elFooBar -> HTMLElement | null (for id="foo-bar")
  * // els.elBaz    -> HTMLElement | null (for id="baz")
  */
-export default function <const T extends readonly string[]>(
+export default function getElementsById<const T extends readonly string[]>(
   ...queries: T
 ): Elements<T> {
   const elements = {} as Elements<T>;
@@ -50,7 +50,7 @@ export default function <const T extends readonly string[]>(
         .map((s) => s.charAt(0).toUpperCase() + s.slice(1))
         .join("");
     elements[prop as keyof Elements<T>] = document.getElementById(
-      query,
+      query
     ) as Elements<T>[keyof Elements<T>];
   }
   return elements;

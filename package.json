@@ -1,10 +1,48 @@
 {
   "name": "tsuite",
-  "version": "0.0.3",
   "description": "A collection of useful utility functions, All fully typed and documented",
+  "version": "0.0.3-1",
   "main": "dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./get-elements-by-id": {
+      "import": "./dist/get-elements-by-id.mjs",
+      "require": "./dist/get-elements-by-id.js",
+      "types": "./dist/get-elements-by-id.d.ts"
+    },
+    "./hug-text": {
+      "import": "./dist/hug-text.mjs",
+      "require": "./dist/hug-text.js",
+      "types": "./dist/hug-text.d.ts"
+    },
+    "./load-image-with-fallback": {
+      "import": "./dist/load-image-with-fallback.mjs",
+      "require": "./dist/load-image-with-fallback.js",
+      "types": "./dist/load-image-with-fallback.d.ts"
+    },
+    "./toast": {
+      "import": "./dist/toast.mjs",
+      "require": "./dist/toast.js",
+      "types": "./dist/toast.d.ts"
+    },
+    "./try-catch": {
+      "import": "./dist/try-catch.mjs",
+      "require": "./dist/try-catch.js",
+      "types": "./dist/try-catch.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "tsc && rollup -c",
+    "dev": "tsup --watch",
+    "build": "tsup --clean",
     "fmt": "pnpm dlx prettier --write ."
   },
   "keywords": [],
@@ -12,9 +50,9 @@
   "license": "ISC",
   "packageManager": "pnpm@10.8.1",
   "devDependencies": {
-    "@rollup/plugin-typescript": "^12.1.2",
-    "rollup": "^4.40.0",
     "tslib": "^2.8.1",
-    "typescript": "^5.8.3"
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3",
+    "@types/node": "^22.14.1"
   }
 }

@@ -86,7 +86,7 @@ export default function <T, E = Error>(
  *   // handle result or error
  * });
  */
-export default function <T, E = Error>(
+export default function tryCatch<T, E = Error>(
   input: (() => T) | Promise<T>
 ): Promise<[T | null, E | null]> | [T | null, E | null] {
   if (typeof input === "function") {

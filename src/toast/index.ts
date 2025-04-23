@@ -1,5 +1,4 @@
-// src/functions/toast.ts
-import isBrowser from "../helpers/is-browser";
+import { isBrowser } from "../helpers";
 
 if (isBrowser() && typeof customElements !== "undefined") {
   class TsuiteToast extends HTMLElement {
@@ -74,7 +73,7 @@ interface ToastElement extends HTMLElement {
  *
  * @param message A string or object to display.
  */
-export default function (message?: any): void {
+export default function toast(message?: any): void {
   if (!isBrowser() || typeof document === "undefined") {
     // Fallback on server or non-browser
     console.log(

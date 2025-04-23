@@ -20,8 +20,8 @@
  * hugText(element);
  * ```
  */
-export default function (
-  input: HTMLElement | NodeList | HTMLCollection | HTMLElement[],
+export default function hugText(
+  input: HTMLElement | NodeList | HTMLCollection | HTMLElement[]
 ) {
   if (!input) {
     throw new Error("Input is required");
@@ -37,7 +37,7 @@ export default function (
     elements = input.filter((el) => el instanceof Element);
   } else {
     throw new Error(
-      `Invalid input type. Expected Element, NodeList, HTMLCollection, or Array. got ${typeof input}`,
+      `Invalid input type. Expected Element, NodeList, HTMLCollection, or Array. got ${typeof input}`
     );
   }
 

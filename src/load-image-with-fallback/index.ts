@@ -23,10 +23,10 @@
  * @param {Function|string} fallback What to do when loading the preferred source fails.
  *        Can be either a function (called with (img, error)) or a different image source URL.
  */
-export default function (
+export default function loadImageWithFallback(
   imageElement: HTMLImageElement,
   src: string,
-  fallback: Function | string,
+  fallback: Function | string
 ) {
   fetch(src)
     .then((response) => {

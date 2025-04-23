@@ -1,4 +1,4 @@
-export default function (): boolean {
+export function isBrowser(): boolean {
   return (
     typeof window !== "undefined" && typeof window.document !== "undefined"
   );
