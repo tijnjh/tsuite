@@ -8,33 +8,27 @@
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js"
     },
     "./get-elements-by-id": {
       "import": "./dist/get-elements-by-id.mjs",
-      "require": "./dist/get-elements-by-id.js",
-      "types": "./dist/get-elements-by-id.d.ts"
+      "require": "./dist/get-elements-by-id.js"
     },
     "./hug-text": {
       "import": "./dist/hug-text.mjs",
-      "require": "./dist/hug-text.js",
-      "types": "./dist/hug-text.d.ts"
+      "require": "./dist/hug-text.js"
     },
     "./load-image-with-fallback": {
       "import": "./dist/load-image-with-fallback.mjs",
-      "require": "./dist/load-image-with-fallback.js",
-      "types": "./dist/load-image-with-fallback.d.ts"
+      "require": "./dist/load-image-with-fallback.js"
     },
     "./toast": {
       "import": "./dist/toast.mjs",
-      "require": "./dist/toast.js",
-      "types": "./dist/toast.d.ts"
+      "require": "./dist/toast.js"
     },
     "./try-catch": {
       "import": "./dist/try-catch.mjs",
-      "require": "./dist/try-catch.js",
-      "types": "./dist/try-catch.d.ts"
+      "require": "./dist/try-catch.js"
     }
   },
   "files": [
