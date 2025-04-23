@@ -3,7 +3,7 @@
  *
  * @template T The type of the result.
  * @template E The type of the error.
- * @param {(Function)} fn - A function to execute.
+ * @param {Function} fn - A function to execute.
  * @returns {[T|null, E|null]} A tuple containing the result or an error.
  *
  * @example
