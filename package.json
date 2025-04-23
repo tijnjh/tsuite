@@ -10,9 +10,9 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
-    "./get-elements-by-id": {
-      "import": "./dist/get-elements-by-id.mjs",
-      "require": "./dist/get-elements-by-id.js"
+    "./map-elements-by-id": {
+      "import": "./dist/map-elements-by-id.mjs",
+      "require": "./dist/map-elements-by-id.js"
     },
     "./hug-text": {
       "import": "./dist/hug-text.mjs",

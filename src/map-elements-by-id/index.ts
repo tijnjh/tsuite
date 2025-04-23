@@ -34,11 +34,11 @@ type Elements<T extends readonly string[]> = {
  * values as the corresponding HTMLElement or null.
  *
  * @example
- * const els = getElementsById('foo-bar', 'baz');
+ * const els = mapElementsById('foo-bar', 'baz');
  * // els.elFooBar -> HTMLElement | null (for id="foo-bar")
  * // els.elBaz    -> HTMLElement | null (for id="baz")
  */
-export default function getElementsById<const T extends readonly string[]>(
+export default function mapElementsById<const T extends readonly string[]>(
   ...queries: T
 ): Elements<T> {
   const elements = {} as Elements<T>;

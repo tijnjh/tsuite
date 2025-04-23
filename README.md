@@ -27,7 +27,7 @@ Import individual utilities for optimal tree-shaking:
 
 ```typescript
 // TypeScript or modern JavaScript
-import { tryCatch, getElementsById } from "tsuite";
+import { tryCatch, mapElementsById } from "tsuite";
 
 const [result, error] = tryCatch(() => JSON.parse('{"ok":1}'));
 ```
@@ -55,7 +55,7 @@ Now access utilities from the global `tsuite` object:
 
 ```html
 <script>
-  const { elFoo, elBar } = tsuite.getElementsById("foo", "bar");
+  const { elFoo, elBar } = tsuite.mapElementsById("foo", "bar");
   // Use elFoo, elBar...
 </script>
 ```
@@ -64,7 +64,7 @@ Now access utilities from the global `tsuite` object:
 
 ## API
 
-### getElementsById
+### mapElementsById
 
 <details>
 <summary>Click to view</summary>
@@ -75,7 +75,7 @@ The object keys are in PascalCase and prefixed with `el`.
 #### **Signature**
 
 ```typescript
-getElementsById(...queries: string[]): {
+mapElementsById(...queries: string[]): {
   [key: string]: HTMLElement | null;
 }
 ```
@@ -83,9 +83,9 @@ getElementsById(...queries: string[]): {
 #### **Example**
 
 ```typescript
-import { getElementsById } from "tsuite";
+import { mapElementsById } from "tsuite";
 
-const els = getElementsById("foo-bar", "baz");
+const els = mapElementsById("foo-bar", "baz");
 // els.elFooBar -> HTMLElement | null (for id="foo-bar")
 // els.elBaz    -> HTMLElement | null (for id="baz")
 ```
