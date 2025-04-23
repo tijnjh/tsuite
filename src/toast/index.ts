@@ -11,7 +11,6 @@ if (isBrowser() && typeof customElements !== "undefined") {
           .toast {
             box-sizing: border-box;
             position: fixed;
-            margin: 0 auto;
             left: 50%;
             translate: -50% 0 ;
             top: 1rem;
@@ -21,7 +20,7 @@ if (isBrowser() && typeof customElements !== "undefined") {
             box-shadow: 0 2px 12px rgba(0,0,0,0.2);
             font-family: system-ui;
             cursor: pointer;
-            max-width: min(calc(100% - 2rem), 30rem);
+            max-width: min(calc(100% - 2rem), 45rem);
             overflow: hidden;
             overflow-wrap: break-word;
             transition: opacity .256s ease, transform .256s ease;
