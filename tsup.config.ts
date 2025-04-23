@@ -18,19 +18,12 @@ const functionEntries = Object.fromEntries(
   ])
 );
 
+const entries = { ...functionEntries, index: "src/index.ts" };
+
 export default defineConfig([
   {
     dts: true,
-    entry: ["src/index.ts"],
-    format: ["cjs", "esm", "iife"],
-    globalName: "tsuite",
-    minify: true,
-    sourcemap: true,
-    clean: true,
-  },
-  {
-    dts: true,
-    entry: functionEntries,
+    entry: entries,
     format: ["cjs", "esm", "iife"],
     globalName: "tsuite",
     sourcemap: true,
