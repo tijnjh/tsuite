@@ -5,7 +5,7 @@
 > **noun**  
 > _a number of things forming a series or set._
 
-A collection of useful utility functions, All fully typed
+A collection of useful utility functions, All fully typed and documented
 
 [![npm version](https://img.shields.io/npm/v/tsuite.svg)](https://npmjs.com/package/tsuite)
 
@@ -61,7 +61,6 @@ Now access utilities from the global `tsuite` object:
 ```
 
 ---
-
 
 ## API
 
