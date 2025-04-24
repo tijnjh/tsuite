@@ -40,15 +40,15 @@ import * as tsuite from "tsuite";
 
 ---
 
-### In the Browser (UMD build)
+### In the Browser
 
 Include the bundle via a CDN or your local `node_modules`:
 
 ```html
 <!-- From node_modules -->
-<script src="/node_modules/tsuite/dist/bundle.js"></script>
+<script src="/node_modules/tsuite/dist/index.global.js"></script>
 <!-- Or from CDN -->
-<script src="https://unpkg.com/tsuite/dist/bundle.js"></script>
+<script src="https://unpkg.com/tsuite/dist/index.global.js"></script>
 ```
 
 Now access utilities from the global `tsuite` object:
@@ -56,7 +56,6 @@ Now access utilities from the global `tsuite` object:
 ```html
 <script>
   const { elFoo, elBar } = tsuite.mapElementsById("foo", "bar");
-  // Use elFoo, elBar...
 </script>
 ```
 
@@ -85,9 +84,9 @@ mapElementsById(...queries: string[]): {
 ```typescript
 import { mapElementsById } from "tsuite";
 
-const els = mapElementsById("foo-bar", "baz");
-// els.elFooBar -> HTMLElement | null (for id="foo-bar")
-// els.elBaz    -> HTMLElement | null (for id="baz")
+const { elFooBar, elBar } = mapElementsById("foo-bar", "baz");
+// elFooBar -> HTMLElement | null (for id="foo-bar")
+// elBaz    -> HTMLElement | null (for id="baz")
 ```
 
 </details>
