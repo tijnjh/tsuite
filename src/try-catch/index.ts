@@ -49,7 +49,7 @@ const internalTryCatchForType = {
       }
     }
 
-    return [responses, errors];
+    return [responses, Object.keys(errors).length === 0 ? null : errors];
   },
 };
 
