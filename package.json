@@ -1,7 +1,13 @@
 {
   "name": "tsuite",
   "description": "A collection of useful utility functions, All fully typed and documented",
-  "version": "0.0.4-1",
+  "authors": [
+    "Tijn/Jonas <tijn@tijn.dev>"
+  ],
+  "homepage": "https://github.com/tijnjh/tsuite",
+  "repository": "tijnjh/tsuite",
+  "license": "AGPL-3.0-only",
+  "version": "0.0.4-2",
   "main": "dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -41,7 +47,6 @@
   },
   "keywords": [],
   "author": "tijnjh",
-  "license": "ISC",
   "packageManager": "pnpm@10.8.1",
   "devDependencies": {
     "tslib": "^2.8.1",
