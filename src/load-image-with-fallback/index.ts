@@ -1,3 +1,5 @@
+import tryCatch from "../try-catch";
+
 /**
  * Attempts to load an image via fetch and sets it as a data URL on the given <img> element.
  *
@@ -28,26 +30,29 @@ export default function loadImageWithFallback(
   src: string,
   fallback: Function | string
 ) {
-  fetch(src)
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      return response.blob();
-    })
-    .then((blob) => {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        if (!e.target) return;
-        imageElement.src = String(e.target.result);
-      };
-      reader.readAsDataURL(blob);
-    })
-    .catch((error) => {
-      if (typeof fallback === "function") {
-        fallback(imageElement, error);
-      } else if (typeof fallback === "string") {
-        imageElement.src = fallback;
-      }
-    });
+  const [, err] = tryCatch(() =>
+    tryCatch(fetch(src))
+      .then(([res, err]) => {
+        if (err) throw new Error(`Failed to fetch!: ${err}`);
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+
+        return res.blob();
+      })
+      .then((blob) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          if (!e.target) return;
+          imageElement.src = String(e.target.result);
+        };
+        reader.readAsDataURL(blob);
+      })
+  );
+
+  if (err) {
+    if (typeof fallback === "function") {
+      fallback(imageElement, err);
+    } else if (typeof fallback === "string") {
+      imageElement.src = fallback;
+    }
+  }
 }
