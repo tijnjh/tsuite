@@ -20,6 +20,9 @@ importers:
       typedoc:
         specifier: ^0.28.3
         version: 0.28.3(typescript@5.8.3)
+      typedoc-plugin-rename-defaults:
+        specifier: ^0.7.3
+        version: 0.7.3(typedoc@0.28.3(typescript@5.8.3))
       typescript:
         specifier: ^5.8.3
         version: 5.8.3
@@ -370,6 +373,10 @@ packages:
     resolution: {integrity: sha512-b6Ilus+c3RrdDk+JhLKUAQfzzgLEPy6wcXqS7f/xe1EETvsDP6GORG7SFuOs6cID5YkqchW/LXZbX5bc8j7ZcQ==}
     engines: {node: '>=8'}
 
+  camelcase@8.0.0:
+    resolution: {integrity: sha512-8WB3Jcas3swSvjIeA2yvCJ+Miyz5l1ZmB6HFb9R1317dt9LCQoswg/BGrmAmkWVEszSrrg4RwmO46qIm2OEnSA==}
+    engines: {node: '>=16'}
+
   chokidar@4.0.3:
     resolution: {integrity: sha512-Qgzu8kfBvo+cA4962jnP1KkS6Dop5NS6g7R5LFYJr4b8Ub94PPQXUksCw9PvXoeXPRRddRNC5C1JQUR2SMGtnA==}
     engines: {node: '>= 14.16.0'}
@@ -647,6 +654,11 @@ packages:
       typescript:
         optional: true
 
+  typedoc-plugin-rename-defaults@0.7.3:
+    resolution: {integrity: sha512-fDtrWZ9NcDfdGdlL865GW7uIGQXlthPscURPOhDkKUe4DBQSRRFUf33fhWw41FLlsz8ZTeSxzvvuNmh54MynFA==}
+    peerDependencies:
+      typedoc: '>=0.22.x <0.29.x'
+
   typedoc@0.28.3:
     resolution: {integrity: sha512-5svOCTfXvVSh6zbZKSQluZhR8yN2tKpTeHZxlmWpE6N5vc3R8k/jhg9nnD6n5tN9/ObuQTojkONrOxFdUFUG9w==}
     engines: {node: '>= 18', pnpm: '>= 10'}
@@ -921,6 +933,8 @@ snapshots:
       load-tsconfig: 0.2.5
 
   cac@6.7.14: {}
+
+  camelcase@8.0.0: {}
 
   chokidar@4.0.3:
     dependencies:
@@ -1205,6 +1219,11 @@ snapshots:
       - supports-color
       - tsx
       - yaml
+
+  typedoc-plugin-rename-defaults@0.7.3(typedoc@0.28.3(typescript@5.8.3)):
+    dependencies:
+      camelcase: 8.0.0
+      typedoc: 0.28.3(typescript@5.8.3)
 
   typedoc@0.28.3(typescript@5.8.3):
     dependencies:
