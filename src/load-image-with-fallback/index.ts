@@ -1,4 +1,4 @@
-import tryCatch from "../try-catch";
+import tryCatch from "../try-catch/index";
 
 /**
  * Attempts to load an image via fetch and sets it as a data URL on the given <img> element.
