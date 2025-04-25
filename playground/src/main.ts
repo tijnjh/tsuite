@@ -1,4 +1,4 @@
-import { tryCatch } from "../../src";
+import { tryCatch, createNode, toast } from "../../src";
 
 const [objectRes, objectErr] = tryCatch({
   somethingThatWontError: () => JSON.parse('{ "something": "something" }'),
@@ -8,14 +8,12 @@ const [objectRes, objectErr] = tryCatch({
 const [promiseRes, promiseErr] = await tryCatch(fetch("something://something"));
 
 const [functionRes, functionErr] = tryCatch(
-  () => new URL("this isnt a valid url")
+  () => new URL("this isnt a valid url"),
 );
 
-console.log({
-  objectRes,
-  objectErr,
-  promiseRes,
-  promiseErr,
-  functionRes,
-  functionErr,
+const elDiv = createNode("div", {
+  textContent: "Hello!",
+  id: "myDiv",
+  style: { color: "red" },
 });
+document.body.append(elDiv);

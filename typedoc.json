@@ -1,6 +1,5 @@
 {
-    "entryPoints": ["./src/hug-text/index.ts", "./src/load-image-with-fallback/index.ts", "./src/map-elements-by-id/index.ts", "./src/toast/index.ts", "./src/try-catch/index.ts"],
-    "out": "docs",
-    "name": "tsuite",
-  }
-  
+  "entryPoints": ["./src"],
+  "out": "docs",
+  "name": "tsuite",
+}
