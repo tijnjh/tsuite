@@ -18,7 +18,7 @@ type TryCatchResult<T, E> =
 
 const internalTryCatchForType = {
   function: <T, E = Error>(
-    input: TryCatchFunctionInput<T>
+    input: TryCatchFunctionInput<T>,
   ): TryCatchFunctionReturn<T, E> => {
     try {
       return [input(), null as any];
@@ -28,7 +28,7 @@ const internalTryCatchForType = {
   },
 
   promise: <T, E = Error>(
-    input: TryCatchPromiseInput<T>
+    input: TryCatchPromiseInput<T>,
   ): TryCatchPromiseReturn<T, E> => {
     return input
       .then((data): [T, null] => [data, null])
@@ -36,7 +36,7 @@ const internalTryCatchForType = {
   },
 
   object: <T extends Record<string, () => any>, E = Error>(
-    input: T
+    input: T,
   ): TryCatchObjectReturn<T, E> => {
     const errors: { [K in keyof T]?: E } = {};
     const responses: { [K in keyof T]: ReturnType<T[K]> } = {} as any;
@@ -76,7 +76,7 @@ const internalTryCatchForType = {
  * }
  */
 export default function <T, E = Error>(
-  func: TryCatchFunctionInput<T>
+  func: TryCatchFunctionInput<T>,
 ): TryCatchFunctionReturn<T, E>;
 
 /**
@@ -107,7 +107,7 @@ export default function <T, E = Error>(
  * });
  */
 export default function <T, E = Error>(
-  promise: TryCatchPromiseInput<T>
+  promise: TryCatchPromiseInput<T>,
 ): TryCatchPromiseReturn<T, E>;
 
 /**
@@ -129,7 +129,7 @@ export default function <T, E = Error>(
  * console.log("Errors:", errors);   // { fail: Error("Oops!") }
  */
 export default function <T, E = Error>(
-  object: TryCatchObjectInput<T>
+  object: TryCatchObjectInput<T>,
 ): TryCatchObjectReturn<T, E>;
 
 /**
@@ -191,7 +191,7 @@ export default function <T, E = Error>(
  * console.log("Errors:", errors);   // { fail: Error("Oops!") }
  */
 export default function tryCatch<T, E = Error>(
-  input: TryCatchInput<T>
+  input: TryCatchInput<T>,
 ): TryCatchResult<T, E> {
   if (typeof input === "function") {
     return internalTryCatchForType.function<T, E>(input);

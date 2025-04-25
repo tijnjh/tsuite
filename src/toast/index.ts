@@ -46,7 +46,7 @@ if (isBrowser() && typeof customElements !== "undefined") {
       const toastEl = document.createElement("div");
       toastEl.className = "toast";
       toastEl.textContent =
-        typeof message === "object" ? JSON.stringify(message) : message ?? "";
+        typeof message === "object" ? JSON.stringify(message) : (message ?? "");
       this.shadowRoot!.append(toastEl);
 
       // Trigger the "animate-in" transition
@@ -78,13 +78,13 @@ export default function toast(message?: any): void {
     // Fallback on server or non-browser
     console.log(
       "toast message:",
-      typeof message === "object" ? JSON.stringify(message) : message
+      typeof message === "object" ? JSON.stringify(message) : message,
     );
     return;
   }
 
   let toastEl = document.querySelector(
-    "internal__tsuite-toast"
+    "internal__tsuite-toast",
   ) as ToastElement | null;
 
   if (!toastEl) {

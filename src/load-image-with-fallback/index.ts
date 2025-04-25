@@ -28,7 +28,7 @@ import tryCatch from "../try-catch/index";
 export default function loadImageWithFallback(
   imageElement: HTMLImageElement,
   src: string,
-  fallback: Function | string
+  fallback: Function | string,
 ) {
   const [, err] = tryCatch(() =>
     tryCatch(fetch(src))
@@ -45,7 +45,7 @@ export default function loadImageWithFallback(
           imageElement.src = String(e.target.result);
         };
         reader.readAsDataURL(blob);
-      })
+      }),
   );
 
   if (err) {

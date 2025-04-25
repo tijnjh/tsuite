@@ -1,5 +1,5 @@
 {
   "entryPoints": ["./src"],
   "out": "docs",
-  "name": "tsuite",
+  "name": "tsuite"
 }

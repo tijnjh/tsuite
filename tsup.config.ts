@@ -15,7 +15,7 @@ const functionEntries = Object.fromEntries(
   Object.entries(functions).map(([key, value]) => [
     key,
     `src/${value}/index.ts`,
-  ])
+  ]),
 );
 
 const entries = { ...functionEntries, index: "src/index.ts" };
