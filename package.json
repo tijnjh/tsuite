@@ -43,15 +43,17 @@
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup --clean",
-    "fmt": "pnpm dlx prettier --write ."
+    "fmt": "pnpm dlx prettier --write .",
+    "typedoc": "typedoc"
   },
   "keywords": [],
   "author": "tijnjh",
   "packageManager": "pnpm@10.8.1",
   "devDependencies": {
+    "@types/node": "^22.14.1",
     "tslib": "^2.8.1",
     "tsup": "^8.4.0",
-    "typescript": "^5.8.3",
-    "@types/node": "^22.14.1"
+    "typedoc": "^0.28.3",
+    "typescript": "^5.8.3"
   }
 }
