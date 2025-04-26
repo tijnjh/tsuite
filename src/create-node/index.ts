@@ -4,7 +4,7 @@ type ElementAttributes<TagName extends keyof HTMLElementTagNameMap> = Omit<
   Partial<HTMLElementTagNameMap[TagName]>,
   "style"
 > & {
-  style?: Properties;
+  style?: Properties | string;
 };
 
 /**
@@ -14,19 +14,29 @@ type ElementAttributes<TagName extends keyof HTMLElementTagNameMap> = Omit<
  * @template TagName The tag name of the HTML element to create.
  * @param tagName The tag name of the element to create (e.g., 'div', 'span').
  * @param attributes Optional attributes and styles to set on the element.
- *   - **Note:** The `style` attribute is overwritten to accept a CSS-in-JS object
- *     (from `csstype`) instead of a string. For example:
- *     `{ color: "red", fontWeight: "bold" }`
+ *   - All standard element properties are supported.
+ *   - The `style` attribute can be:
+ *     - a **CSS-in-JS object** (from `csstype`), e.g. `{ color: "red", fontWeight: "bold" }`
+ *       - This provides autocomplete and strict type checking.
+ *     - a **string** (as in standard DOM usage), e.g. `"color: red; font-weight: bold;"`
+ *       - This does **not** provide autocomplete or type checking.
  * @param children Child nodes to append to the created element.
  * @returns The created HTML element.
  *
  * @example
- * const elDiv = createNode("div", {
+ * // Using a CSS-in-JS object for style (type-safe, with autocomplete)
+ * const el1 = createNode("div", {
  *   textContent: "Hello!",
- *   id: "myDiv",
- *   style: { color: "red", fontWeight: "bold" } // style is an object, not a string
+ *   style: { color: "red", fontWeight: "bold" }
  * });
- * document.body.append(elDiv);
+ *
+ * // Using a string for style (no type safety or autocomplete)
+ * const el2 = createNode("div", {
+ *   textContent: "World!",
+ *   style: "color: blue; font-weight: bold;"
+ * });
+ *
+ * document.body.append(el1, el2);
  */
 export default function createNode<TagName extends keyof HTMLElementTagNameMap>(
   tagName: TagName,
@@ -37,7 +47,10 @@ export default function createNode<TagName extends keyof HTMLElementTagNameMap>(
 
   if (attributes) {
     if (attributes.style) {
-      Object.assign(node.style, attributes.style);
+      if (typeof attributes.style === "object")
+        Object.assign(node.style, attributes.style);
+      else if (typeof attributes.style === "string")
+        node.style.cssText = attributes.style;
     }
     const { style, ...rest } = attributes;
     Object.assign(node, rest);
