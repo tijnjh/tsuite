@@ -1,3 +1,4 @@
+# .github/workflows/deploy-docs.yml
 name: Build and Deploy Docs
 
 on:
@@ -22,11 +23,16 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8 # or your preferred pnpm version
+
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install
 
       - name: Build docs
-        run: npm run build:docs
+        run: pnpm run build:docs
 
       - name: Upload docs artifact
         uses: actions/upload-pages-artifact@v3
