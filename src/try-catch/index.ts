@@ -72,7 +72,7 @@ const internalTryCatchForType = {
  *   console.log("Function succeeded:", res);
  * }
  */
-export default function <T, E = Error>(
+export default function tryCatch<T, E = Error>(
   func: TryCatchFunctionInput<T>,
 ): TryCatchFunctionReturn<T, E>;
 
@@ -103,9 +103,30 @@ export default function <T, E = Error>(
  *   }
  * });
  */
-export default function <T, E = Error>(
+export default function tryCatch<T, E = Error>(
   promise: TryCatchPromiseInput<T>,
 ): TryCatchPromiseReturn<T, E>;
+
+/**
+ * @deprecated Use tryCatch.all() instead
+ */
+export default function tryCatch<T, E = Error>(
+  object: TryCatchObjectInput<T>,
+): TryCatchObjectReturn<T, E>;
+
+export default function tryCatch<T, E = Error>(
+  input: TryCatchInput<T>,
+): TryCatchResult<T, E> {
+  if (typeof input === "function") {
+    return internalTryCatchForType.function<T, E>(input);
+  }
+
+  if (input instanceof Promise) {
+    return internalTryCatchForType.promise(input);
+  }
+
+  throw new Error("Input must be a function or a promise.");
+}
 
 /**
  * Executes an object of functions and returns a tuple containing the results or errors.
@@ -124,81 +145,7 @@ export default function <T, E = Error>(
  * console.log("Results:", res); // { add: 3, multiply: 6 }
  * console.log("Errors:", err);  // { fail: Error("Oops!") }
  */
-export default function <T, E = Error>(
-  object: TryCatchObjectInput<T>,
-): TryCatchObjectReturn<T, E>;
 
-/**
- * Executes a function, a promise, or an object of functions, and returns a tuple or object containing the result(s) or error(s).
- *
- * - If a function is provided, it executes the function and returns `[res, null]` if successful,
- *   or `[null, err]` if an error is thrown.
- * - If a promise is provided, it returns a promise that resolves to `[res, null]` if successful,
- *   or `[null, err]` if the promise is rejected.
- * - If an object of functions is provided, it executes each function and returns `[res, err]`,
- *   where `res` is an object of successful results and `err` is an object of errors keyed by function name (or `null` if no errors).
- *
- * @template T The type of the input object containing functions.
- * @template E The type of the error.
- * @param input A function to execute, a promise to resolve, or an object of functions.
- * @returns
- *   - For a function: `[res, err]`
- *   - For a promise: `Promise<[res, err]>`
- *   - For an object: `[res, err]`
- *
- * @throws {Error} If the input is neither a function, promise, nor an object of functions.
- *
- * @example <caption>Handling a synchronous function</caption>
- * const [res, err] = tryCatch(() => {
- *   if (Math.random() > 0.5) throw new Error("Random error");
- *   return 42;
- * });
- * if (err) {
- *   console.error("Function failed:", err.message);
- * } else {
- *   console.log("Function succeeded:", res);
- * }
- *
- * @example <caption>Handling a promise with async/await</caption>
- * async function run() {
- *   const promise = new Promise<string>((resolve, reject) => {
- *     setTimeout(() => {
- *       if (Math.random() > 0.5) reject(new Error("Random promise error"));
- *       else resolve("Promise success");
- *     }, 1000);
- *   });
- *   const [res, err] = await tryCatch(promise);
- *   if (err) {
- *     console.error("Promise failed:", err.message);
- *   } else {
- *     console.log("Promise succeeded:", res);
- *   }
- * }
- * run();
- *
- * @example <caption>Handling an object of functions</caption>
- * const [res, err] = tryCatch({
- *   add: () => 1 + 2,
- *   fail: () => { throw new Error("Oops!"); },
- *   multiply: () => 2 * 3,
- * });
- * console.log("Results:", res); // { add: 3, multiply: 6 }
- * console.log("Errors:", err);  // { fail: Error("Oops!") }
- */
-export default function tryCatch<T, E = Error>(
-  input: TryCatchInput<T>,
-): TryCatchResult<T, E> {
-  if (typeof input === "function") {
-    return internalTryCatchForType.function<T, E>(input);
-  }
-
-  if (input instanceof Promise) {
-    return internalTryCatchForType.promise(input);
-  }
-
-  if (typeof input === "object") {
-    return internalTryCatchForType.object(input);
-  }
-
-  throw new Error("Input must be a function, promise, or an object.");
-}
+tryCatch.all = function <T>(input: TryCatchObjectInput<T>) {
+  return internalTryCatchForType.object(input);
+};
