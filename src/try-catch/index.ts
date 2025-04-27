@@ -4,7 +4,7 @@ type TryCatchAllInput = Record<string, () => any>;
 
 type TryCatchSynchronousResult<T, E> = [T | null, E | null];
 type TryCatchAsynchronousResult<T, E> = Promise<[T | null, E | null]>;
-type TryCatchAllReturn<E> = [Record<string, any>, Record<string, E>];
+type TryCatchAllResult<E> = [Record<string, any>, Record<string, E>];
 
 type TryCatchInput<T> =
   | TryCatchSynchronousInput<T>
@@ -35,7 +35,7 @@ const internalTryCatchForType = {
 
   object: <T extends Record<string, () => any>, E = Error>(
     input: T
-  ): TryCatchAllReturn<E> => {
+  ): TryCatchAllResult<E> => {
     const errors: { [K in keyof T]?: E } = {};
     const responses: { [K in keyof T]: ReturnType<T[K]> } = {} as any;
 
@@ -109,7 +109,7 @@ function tryCatch<T, E = Error>(
  * @deprecated Use tryCatch.all() instead
  */
 // @ts-expect-error
-function tryCatch<T, E = Error>(object: TryCatchAllInput): TryCatchAllReturn<E>;
+function tryCatch<T, E = Error>(object: TryCatchAllInput): TryCatchAllResult<E>;
 
 function tryCatch<T, E = Error>(input: TryCatchInput<T>): TryCatchResult<T, E> {
   if (typeof input === "function") {
@@ -143,7 +143,7 @@ function tryCatch<T, E = Error>(input: TryCatchInput<T>): TryCatchResult<T, E> {
 
 tryCatch.all = function <E = Error>(
   input: TryCatchAllInput
-): TryCatchAllReturn<E> {
+): TryCatchAllResult<E> {
   if (typeof input === "object") {
     return internalTryCatchForType.object(input);
   }
