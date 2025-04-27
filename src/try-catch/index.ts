@@ -137,7 +137,7 @@ export default function tryCatch<T, E = Error>(
  * @returns A tuple containing the results and errors.
  *
  * @example <caption>Handling an object of functions</caption>
- * const [res, err] = tryCatch({
+ * const [res, err] = tryCatch.all({
  *   add: () => 1 + 2,
  *   fail: () => { throw new Error("Oops!"); },
  *   multiply: () => 2 * 3,
@@ -147,5 +147,9 @@ export default function tryCatch<T, E = Error>(
  */
 
 tryCatch.all = function <T>(input: TryCatchObjectInput<T>) {
-  return internalTryCatchForType.object(input);
+  if (typeof input === "object") {
+    return internalTryCatchForType.object(input);
+  }
+
+  throw new Error("Input must be an object of functions.");
 };
