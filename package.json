@@ -4,10 +4,10 @@
   "authors": [
     "Tijn/Jonas <tijn@tijn.dev>"
   ],
-  "homepage": "https://github.com/tijnjh/tsuite",
+  "homepage": "https://tijnjh.github.io/tsuite",
   "repository": "tijnjh/tsuite",
   "license": "AGPL-3.0-only",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "main": "dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
