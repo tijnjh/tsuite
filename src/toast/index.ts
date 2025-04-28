@@ -26,6 +26,7 @@ if (isBrowser() && typeof customElements !== "undefined") {
             transition: opacity .256s ease, transform .256s ease;
             opacity: 0;
             transform: translateY(-6rem);
+            z-index: 9999;
           }
           .toast.animate-in {
             opacity: 1;
