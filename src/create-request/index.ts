@@ -1,4 +1,4 @@
-import { tryCatch } from ".."; // Assuming 'tryCatch' is imported correctly
+import { tryCatch } from "..";
 
 type FetchInput = RequestInfo | URL;
 type FetchInit = RequestInit & { event?: { fetch: typeof fetch } };
@@ -50,12 +50,9 @@ class Request {
    * @throws If the fetch request fails or if the JSON parsing fails
    */
   async getJson<T>(): Promise<T> {
-    await this.get(); // Await the get operation
+    await this.get();
 
-    // Check if response is defined after sending
     if (!this.response) {
-      // This case should ideally not be reached if send() throws on failure,
-      // but it's good practice for type safety.
       throw new Error("Request sending failed unexpectedly.");
     }
 
