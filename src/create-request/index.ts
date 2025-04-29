@@ -23,7 +23,7 @@ class Request {
     this.sendPromise = (async () => {
       const fetchFunc = this.init?.event?.fetch || fetch;
       const [fetchRes, fetchErr] = await tryCatch(
-        fetchFunc(this.input, this.init)
+        fetchFunc(this.input, this.init),
       );
 
       if (fetchErr) {
@@ -32,7 +32,7 @@ class Request {
 
       if (!fetchRes?.ok) {
         throw new Error(
-          `HTTP error! status: ${fetchRes?.status} ${fetchRes?.statusText}`
+          `HTTP error! status: ${fetchRes?.status} ${fetchRes?.statusText}`,
         );
       }
 
@@ -49,7 +49,7 @@ class Request {
    * @returns A promise that resolves to the parsed JSON data
    * @throws If the fetch request fails or if the JSON parsing fails
    */
-  async json<T>(): Promise<T> {
+  async getJson<T>(): Promise<T> {
     await this.send(); // Await the send operation
 
     // Check if response is defined after sending
@@ -74,7 +74,7 @@ class Request {
    * @returns A promise that resolves to a string
    * @throws If the fetch request fails
    */
-  async text(): Promise<string> {
+  async getText(): Promise<string> {
     await this.send();
 
     if (!this.response) {
@@ -94,7 +94,7 @@ class Request {
 /**
  * Creates a new Request instance for making fetch requests.
  *
- * @param input The input for the fetch request. This can be a URL string or a Request object.
+ * @param input The input for the fetch request. This can be a URL string or a RequestInfo object.
  * @param init An optional object containing custom settings for the fetch request. This can include properties like `method`, `headers`, `body`, etc. It can also include an `event` property with a `fetch` function for custom fetch implementations (e.g., for testing).
  * @returns A Request instance. **Note: You should not call this function without chaining either the `.json()` or `.text()` method to retrieve the response data.**
  * @example
