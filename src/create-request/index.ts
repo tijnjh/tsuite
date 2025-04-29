@@ -14,7 +14,7 @@ class Request {
     this.init = init;
   }
 
-  private async send(): Promise<void> {
+  private async get(): Promise<void> {
     if (this.sendPromise) {
       await this.sendPromise;
       return;
@@ -23,7 +23,7 @@ class Request {
     this.sendPromise = (async () => {
       const fetchFunc = this.init?.event?.fetch || fetch;
       const [fetchRes, fetchErr] = await tryCatch(
-        fetchFunc(this.input, this.init),
+        fetchFunc(this.input, this.init)
       );
 
       if (fetchErr) {
@@ -32,7 +32,7 @@ class Request {
 
       if (!fetchRes?.ok) {
         throw new Error(
-          `HTTP error! status: ${fetchRes?.status} ${fetchRes?.statusText}`,
+          `HTTP error! status: ${fetchRes?.status} ${fetchRes?.statusText}`
         );
       }
 
@@ -50,7 +50,7 @@ class Request {
    * @throws If the fetch request fails or if the JSON parsing fails
    */
   async getJson<T>(): Promise<T> {
-    await this.send(); // Await the send operation
+    await this.get(); // Await the get operation
 
     // Check if response is defined after sending
     if (!this.response) {
@@ -75,7 +75,7 @@ class Request {
    * @throws If the fetch request fails
    */
   async getText(): Promise<string> {
-    await this.send();
+    await this.get();
 
     if (!this.response) {
       throw new Error("Request sending failed unexpectedly.");
@@ -96,10 +96,10 @@ class Request {
  *
  * @param input The input for the fetch request. This can be a URL string or a RequestInfo object.
  * @param init An optional object containing custom settings for the fetch request. This can include properties like `method`, `headers`, `body`, etc. It can also include an `event` property with a `fetch` function for custom fetch implementations (e.g., for testing).
- * @returns A Request instance. **Note: You should not call this function without chaining either the `.json()` or `.text()` method to retrieve the response data.**
+ * @returns A Request instance. **Note: You should not call this function without chaining either the `.getJson()` or `.getText()` method to retrieve the response data.**
  * @example
  * // Correct usage:
- * createRequest('https://api.example.com/data').json()
+ * createRequest('https://api.example.com/data').getJson()
  *   .then((data) => console.log(data))
  *   .catch((error) => console.error(error));
  *
