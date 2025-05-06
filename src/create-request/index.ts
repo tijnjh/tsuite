@@ -90,6 +90,8 @@ class Request {
 
 /**
  * Creates a new Request instance for making fetch requests.
+ * 
+ * @deprecated use effetch instead
  *
  * @param input The input for the fetch request. This can be a URL string or a RequestInfo object.
  * @param init An optional object containing custom settings for the fetch request. This can include properties like `method`, `headers`, `body`, etc. It can also include an `event` property with a `fetch` function for custom fetch implementations (e.g., for testing).

@@ -2,7 +2,7 @@ import { tryCatch } from "..";
 
 type EffetchOptions = RequestInit & {
   /** Primarily for SvelteKit's load function */
-  event?: Event & { fetch: typeof fetch };
+  event? &  { event?: { fetch: typeof fetch } };
 
   responseType?: "json" | "text";
 };
