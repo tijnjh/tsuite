@@ -2,10 +2,18 @@ import { tryCatch } from "..";
 
 type EffetchOptions = RequestInit & {
   /** Primarily for SvelteKit's load function */
-  event?: { fetch: typeof fetch }
-
+  event?: { fetch: typeof fetch };
   responseType?: "json" | "text";
 };
+
+async function effetch<T>(
+  input: RequestInfo | URL,
+  init?: EffetchOptions & { responseType?: "json" }
+): Promise<T>;
+async function effetch(
+  input: RequestInfo | URL,
+  init: EffetchOptions & { responseType: "text" }
+): Promise<string>;
 
 /**
  *
@@ -17,10 +25,10 @@ type EffetchOptions = RequestInit & {
  * @returns A promise that resolves to the parsed JSON or text data
  * @throws If the fetch request fails or if the JSON parsing fails
  */
-export default async function effetch<T>(
+async function effetch<T>(
   input: RequestInfo | URL,
   init?: EffetchOptions
-) {
+): Promise<string | T> {
   const fetchFunction = init?.event?.fetch || fetch;
 
   const [res, err] = await tryCatch(fetchFunction(input, init));
@@ -49,3 +57,5 @@ export default async function effetch<T>(
 
   return parseRes as T;
 }
+
+export default effetch;
