@@ -54,7 +54,7 @@ const internalTryCatchForType = {
  *
  * @template T The type of the result.
  * @template E The type of the error.
- * @param func A function to execute.
+ * @param fn A function to execute.
  * @returns A tuple containing the result or an error.
  *
  * @example <caption>Handling a synchronous function</caption>
@@ -69,7 +69,7 @@ const internalTryCatchForType = {
  * }
  */
 function tryCatch<T, E = Error>(
-  func: TryCatchSyncInput<T>,
+  fn: TryCatchSyncInput<T>,
 ): TryCatchSyncResponse<T, E>;
 
 /**

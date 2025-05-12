@@ -3,11 +3,11 @@ type StateSideEffect<T> = (currentValue: T, previousValue?: T) => void;
 class InternalState<T> {
   currentValue: T;
 
-  sideEffect: StateSideEffect<T>;
+  callbackfn: StateSideEffect<T>;
 
-  constructor(initialValue: T, sideEffect: StateSideEffect<T>) {
+  constructor(initialValue: T, callbackfn: StateSideEffect<T>) {
     this.currentValue = initialValue;
-    this.sideEffect = sideEffect;
+    this.callbackfn = callbackfn;
   }
 
   get() {
@@ -17,7 +17,7 @@ class InternalState<T> {
   set(newValue: T) {
     const previousValue = this.currentValue;
     this.currentValue = newValue;
-    this.sideEffect(this.currentValue, previousValue);
+    this.callbackfn(this.currentValue, previousValue);
   }
 }
 
@@ -27,7 +27,7 @@ class InternalState<T> {
  *
  * @template T The type of the state value.
  * @param initialValue The initial value of the state.
- * @param sideEffect A function to run with the new and (optionally) previous value after each update.
+ * @param callbackfn A function to run with the new and (optionally) previous value after each update.
  * @returns A tuple containing a getter and a setter for the state.
  *
  * @example
@@ -39,8 +39,8 @@ class InternalState<T> {
  */
 export default function createState<T>(
   initialValue: T,
-  sideEffect: StateSideEffect<T>
+  callbackfn: StateSideEffect<T>
 ): [() => T, (newValue: T) => void] {
-  const state = new InternalState(initialValue, sideEffect);
+  const state = new InternalState(initialValue, callbackfn);
   return [state.get, state.set];
 }
