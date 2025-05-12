@@ -11,7 +11,7 @@ A collection of useful utility functions, All fully typed and documented
 [![npm version](https://img.shields.io/npm/v/tsuite.svg)](https://npmjs.com/package/tsuite)
 ![NPM Downloads](https://img.shields.io/npm/dm/tsuite)
 ![npm package minimized gzipped size](https://img.shields.io/bundlejs/size/tsuite)
-![docs](https://img.shields.io/badge/view_the_docs-blue)
+[![docs](https://img.shields.io/badge/view_the_docs-blue)](https://tijnjh.github.io/tsuite)
 
 ---
 

@@ -1,13 +1,7 @@
 {
   "name": "tsuite",
+  "version": "0.5.4-2",
   "description": "A collection of useful utility functions, All fully typed and documented",
-  "authors": [
-    "Tijn/Jonas <tijn@tijn.dev>"
-  ],
-  "homepage": "https://tijnjh.github.io/tsuite",
-  "repository": "tijnjh/tsuite",
-  "license": "AGPL-3.0-only",
-  "version": "0.5.4-1",
   "main": "dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -16,9 +10,21 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
-    "./map-elements-by-id": {
-      "import": "./dist/map-elements-by-id.mjs",
-      "require": "./dist/map-elements-by-id.js"
+    "./create-node": {
+      "import": "./dist/create-node.mjs",
+      "require": "./dist/create-node.js"
+    },
+    "./create-request": {
+      "import": "./dist/create-request.mjs",
+      "require": "./dist/create-request.js"
+    },
+    "./create-state": {
+      "import": "./dist/create-state.mjs",
+      "require": "./dist/create-state.js"
+    },
+    "./effetch": {
+      "import": "./dist/effetch.mjs",
+      "require": "./dist/effetch.js"
     },
     "./hug-text": {
       "import": "./dist/hug-text.mjs",
@@ -27,6 +33,10 @@
     "./load-image-with-fallback": {
       "import": "./dist/load-image-with-fallback.mjs",
       "require": "./dist/load-image-with-fallback.js"
+    },
+    "./map-elements-by-id": {
+      "import": "./dist/map-elements-by-id.mjs",
+      "require": "./dist/map-elements-by-id.js"
     },
     "./toast": {
       "import": "./dist/toast.mjs",
@@ -44,11 +54,30 @@
     "dev": "tsup --watch",
     "build": "tsup --clean",
     "build:docs": "typedoc --plugin typedoc-plugin-rename-defaults",
-    "fmt": "pnpm dlx prettier --write ."
+    "fmt": "bun x prettier --write ."
   },
-  "keywords": [],
+  "keywords": [
+    "typescript",
+    "utility",
+    "functions",
+    "try-catch",
+    "error-handling",
+    "dom",
+    "elements",
+    "state",
+    "request",
+    "fetch",
+    "toast",
+    "image",
+    "fallback"
+  ],
   "author": "tijnjh",
-  "packageManager": "pnpm@10.8.1",
+  "authors": [
+    "Tijn/Jonas <tijn@tijn.dev>"
+  ],
+  "homepage": "https://tijnjh.github.io/tsuite",
+  "repository": "tijnjh/tsuite",
+  "license": "AGPL-3.0-only",
   "devDependencies": {
     "@types/node": "^22.14.1",
     "csstype": "^3.1.3",
