@@ -1,6 +1,6 @@
 {
   "name": "tsuite",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "private": false,
   "description": "A collection of useful utility functions, All fully typed and documented",
   "type": "module",
@@ -44,14 +44,14 @@
     "typescript": "^5.8.3"
   },
   "exports": {
-    ".": "./dist/index.mjs",
-    "./create-node": "./dist/create-node.mjs",
-    "./create-request": "./dist/create-request.mjs",
-    "./create-state": "./dist/create-state.mjs",
-    "./effetch": "./dist/effetch.mjs",
-    "./hug-text": "./dist/hug-text.mjs",
-    "./load-image-with-fallback": "./dist/load-image-with-fallback.mjs",
-    "./map-elements-by-id": "./dist/map-elements-by-id.mjs",
+    ".": "./dist/index.js",
+    "./create-node": "./dist/create-node.js",
+    "./create-request": "./dist/create-request.js",
+    "./create-state": "./dist/create-state.js",
+    "./effetch": "./dist/effetch.js",
+    "./hug-text": "./dist/hug-text.js",
+    "./load-image-with-fallback": "./dist/load-image-with-fallback.js",
+    "./map-elements-by-id": "./dist/map-elements-by-id.js",
     "./package.json": "./package.json"
   },
   "dependencies": {
