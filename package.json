@@ -1,11 +1,15 @@
 {
   "name": "tsuite",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "private": false,
   "description": "A collection of useful utility functions, All fully typed and documented",
-  "main": "./dist/index.mjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.mts",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "tsdown --watch",
     "build": "tsdown --clean",
