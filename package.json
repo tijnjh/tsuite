@@ -1,6 +1,6 @@
 {
   "name": "tsuite",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "author": "tijnjh",
   "repository": "tijnjh/tsuite",
   "main": "./dist/index.js",
