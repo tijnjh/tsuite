@@ -1,4 +1,4 @@
-import { tryCatch } from "easy-try-catch";
+import { tryCatch } from "typecatch";
 
 type EffetchOptions = RequestInit & {
   /** Primarily for SvelteKit's load function */

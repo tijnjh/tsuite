@@ -1,4 +1,4 @@
-import { tryCatch } from "easy-try-catch";
+import { tryCatch } from "typecatch";
 
 type FetchInput = RequestInfo | URL;
 type FetchInit = RequestInit & { event?: { fetch: typeof fetch } };
