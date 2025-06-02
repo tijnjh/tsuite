@@ -1,4 +1,4 @@
-import tryCatch from "../try-catch/index";
+import { tryCatch } from "easy-try-catch";
 
 /**
  * Attempts to load an image via fetch and sets it as a data URL on the given <img> element.
@@ -25,15 +25,15 @@ import tryCatch from "../try-catch/index";
  * @param {Function|string} fallback What to do when loading the preferred source fails.
  *        Can be either a function (called with (img, error)) or a different image source URL.
  */
-export default function loadImageWithFallback(
+export function loadImageWithFallback(
   imageElement: HTMLImageElement,
   src: string,
   fallback: Function | string,
 ) {
-  const [, err] = tryCatch(() =>
+  const { error } = tryCatch(() =>
     tryCatch(fetch(src))
-      .then(([res, err]) => {
-        if (err) throw new Error(`Failed to fetch!: ${err}`);
+      .then(({ data: res, error }) => {
+        if (error) throw new Error(`Failed to fetch!: ${error}`);
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
 
         return res.blob();
@@ -45,12 +45,12 @@ export default function loadImageWithFallback(
           imageElement.src = String(e.target.result);
         };
         reader.readAsDataURL(blob);
-      }),
+      })
   );
 
-  if (err) {
+  if (error) {
     if (typeof fallback === "function") {
-      fallback(imageElement, err);
+      fallback(imageElement, error);
     } else if (typeof fallback === "string") {
       imageElement.src = fallback;
     }

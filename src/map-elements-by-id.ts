@@ -38,13 +38,12 @@ type Elements<T extends readonly string[]> = {
  * // els.elFooBar -> HTMLElement | null (for id="foo-bar")
  * // els.elBaz    -> HTMLElement | null (for id="baz")
  */
-export default function mapElementsById<const T extends readonly string[]>(
+export function mapElementsById<const T extends readonly string[]>(
   ...queries: T
 ): Elements<T> {
   const elements = {} as Elements<T>;
   for (const query of queries) {
-    const prop =
-      "el" +
+    const prop = "el" +
       query
         .split("-")
         .map((s) => s.charAt(0).toUpperCase() + s.slice(1))

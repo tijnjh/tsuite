@@ -37,9 +37,9 @@ class InternalState<T> {
  * setCount(1); // Logs: Count changed from 0 to 1
  * console.log(getCount()); // 1
  */
-export default function createState<T>(
+export function createState<T>(
   initialValue: T,
-  callbackfn: StateSideEffect<T>
+  callbackfn: StateSideEffect<T>,
 ): [() => T, (newValue: T) => void] {
   const state = new InternalState(initialValue, callbackfn);
   return [state.get, state.set];

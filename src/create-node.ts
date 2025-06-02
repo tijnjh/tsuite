@@ -1,11 +1,13 @@
 import type { Properties } from "csstype";
 
-type ElementAttributes<TagName extends keyof HTMLElementTagNameMap> = Omit<
-  Partial<HTMLElementTagNameMap[TagName]>,
-  "style"
-> & {
-  style?: Properties | string;
-};
+type ElementAttributes<TagName extends keyof HTMLElementTagNameMap> =
+  & Omit<
+    Partial<HTMLElementTagNameMap[TagName]>,
+    "style"
+  >
+  & {
+    style?: Properties | string;
+  };
 
 /**
  * Creates a new DOM node of the specified tag name, applies the given attributes,
@@ -38,7 +40,7 @@ type ElementAttributes<TagName extends keyof HTMLElementTagNameMap> = Omit<
  *
  * document.body.append(el1, el2);
  */
-export default function createNode<TagName extends keyof HTMLElementTagNameMap>(
+export function createNode<TagName extends keyof HTMLElementTagNameMap>(
   tagName: TagName,
   attributes?: ElementAttributes<TagName>,
   ...children: Node[]
@@ -47,10 +49,11 @@ export default function createNode<TagName extends keyof HTMLElementTagNameMap>(
 
   if (attributes) {
     if (attributes.style) {
-      if (typeof attributes.style === "object")
+      if (typeof attributes.style === "object") {
         Object.assign(node.style, attributes.style);
-      else if (typeof attributes.style === "string")
+      } else if (typeof attributes.style === "string") {
         node.style.cssText = attributes.style;
+      }
     }
     const { style, ...rest } = attributes;
     Object.assign(node, rest);

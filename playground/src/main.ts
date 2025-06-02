@@ -1,4 +1,4 @@
-import { tryCatch, createNode, toast } from "../../src";
+import { createNode, toast, tryCatch } from "../../src";
 
 const [objectRes, objectErr] = tryCatch({
   somethingThatWontError: () => JSON.parse('{ "something": "something" }'),

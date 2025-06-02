@@ -1,55 +1,11 @@
 {
   "name": "tsuite",
-  "version": "0.5.5",
+  "version": "0.6.0",
+  "private": false,
   "description": "A collection of useful utility functions, All fully typed and documented",
-  "main": "dist/index.js",
+  "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    },
-    "./create-node": {
-      "import": "./dist/create-node.mjs",
-      "require": "./dist/create-node.js"
-    },
-    "./create-request": {
-      "import": "./dist/create-request.mjs",
-      "require": "./dist/create-request.js"
-    },
-    "./create-state": {
-      "import": "./dist/create-state.mjs",
-      "require": "./dist/create-state.js"
-    },
-    "./effetch": {
-      "import": "./dist/effetch.mjs",
-      "require": "./dist/effetch.js"
-    },
-    "./hug-text": {
-      "import": "./dist/hug-text.mjs",
-      "require": "./dist/hug-text.js"
-    },
-    "./load-image-with-fallback": {
-      "import": "./dist/load-image-with-fallback.mjs",
-      "require": "./dist/load-image-with-fallback.js"
-    },
-    "./map-elements-by-id": {
-      "import": "./dist/map-elements-by-id.mjs",
-      "require": "./dist/map-elements-by-id.js"
-    },
-    "./toast": {
-      "import": "./dist/toast.mjs",
-      "require": "./dist/toast.js"
-    },
-    "./try-catch": {
-      "import": "./dist/try-catch.mjs",
-      "require": "./dist/try-catch.js"
-    }
-  },
-  "files": [
-    "dist"
-  ],
+  "types": "./dist/index.d.mts",
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup --clean",
@@ -72,9 +28,6 @@
     "fallback"
   ],
   "author": "tijnjh",
-  "authors": [
-    "Tijn/Jonas <tijn@tijn.dev>"
-  ],
   "homepage": "https://tijnjh.github.io/tsuite",
   "repository": "tijnjh/tsuite",
   "license": "AGPL-3.0-only",
@@ -86,5 +39,16 @@
     "typedoc": "^0.28.3",
     "typedoc-plugin-rename-defaults": "^0.7.3",
     "typescript": "^5.8.3"
+  },
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./create-node": "./dist/create-node.mjs",
+    "./create-request": "./dist/create-request.mjs",
+    "./create-state": "./dist/create-state.mjs",
+    "./effetch": "./dist/effetch.mjs",
+    "./hug-text": "./dist/hug-text.mjs",
+    "./load-image-with-fallback": "./dist/load-image-with-fallback.mjs",
+    "./map-elements-by-id": "./dist/map-elements-by-id.mjs",
+    "./package.json": "./package.json"
   }
 }

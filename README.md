@@ -2,7 +2,7 @@
 
 ## /swiːt/ &mdash; _suite_
 
-> **noun**  
+> **noun**\
 > _a number of things forming a series or set._
 
 A collection of useful utility functions, All fully typed and documented
@@ -64,4 +64,5 @@ Now access utilities from the global `tsuite` object:
 
 ## Contributing
 
-If you have a utility you think fits tsuite, feel free to open an issue or pull request.
+If you have a utility you think fits tsuite, feel free to open an issue or pull
+request.

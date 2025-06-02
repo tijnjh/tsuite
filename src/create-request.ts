@@ -1,4 +1,4 @@
-import { tryCatch } from "..";
+import { tryCatch } from "easy-try-catch";
 
 type FetchInput = RequestInfo | URL;
 type FetchInit = RequestInit & { event?: { fetch: typeof fetch } };
@@ -22,21 +22,19 @@ class Request {
 
     this.sendPromise = (async () => {
       const fetchFunc = this.init?.event?.fetch || fetch;
-      const [fetchRes, fetchErr] = await tryCatch(
-        fetchFunc(this.input, this.init)
-      );
+      const res = await tryCatch(fetchFunc(this.input, this.init));
 
-      if (fetchErr) {
-        throw new Error(`Failed to fetch: ${fetchErr}`);
+      if (res.error) {
+        throw new Error(`Failed to fetch: ${res.error}`);
       }
 
-      if (!fetchRes?.ok) {
+      if (!res.data?.ok) {
         throw new Error(
-          `HTTP error! status: ${fetchRes?.status} ${fetchRes?.statusText}`
+          `HTTP error! status: ${res.data?.status} ${res.data?.statusText}`,
         );
       }
 
-      this.response = fetchRes;
+      this.response = res.data;
     })();
 
     await this.sendPromise;
@@ -56,13 +54,13 @@ class Request {
       throw new Error("Request sending failed unexpectedly.");
     }
 
-    const [parseRes, parseErr] = await tryCatch(this.response.json());
+    const parse = await tryCatch(this.response.json());
 
-    if (parseErr) {
-      throw new Error(`Failed to parse JSON: ${parseErr}`);
+    if (parse.error) {
+      throw new Error(`Failed to parse JSON: ${parse.error}`);
     }
 
-    return parseRes as T;
+    return parse.data as T;
   }
 
   /**
@@ -78,19 +76,19 @@ class Request {
       throw new Error("Request sending failed unexpectedly.");
     }
 
-    const [parseRes, parseErr] = await tryCatch(this.response.text());
+    const parse = await tryCatch(this.response.text());
 
-    if (parseErr) {
-      throw new Error(`Failed to parse text: ${parseErr}`);
+    if (parse.error) {
+      throw new Error(`Failed to parse text: ${parse.error}`);
     }
 
-    return parseRes as string;
+    return parse.data;
   }
 }
 
 /**
  * Creates a new Request instance for making fetch requests.
- * 
+ *
  * @deprecated use effetch instead
  *
  * @param input The input for the fetch request. This can be a URL string or a RequestInfo object.
@@ -105,6 +103,6 @@ class Request {
  * // Incorrect usage (will not make the request):
  * const myRequest = createRequest('https://api.example.com/data'); // This won't trigger the fetch
  */
-export default function createRequest(input: FetchInput, init?: FetchInit) {
+export function createRequest(input: FetchInput, init?: FetchInit) {
   return new Request(input, init);
 }

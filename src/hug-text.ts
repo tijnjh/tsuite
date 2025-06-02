@@ -20,7 +20,7 @@
  * hugText(element);
  * ```
  */
-export default function hugText(
+export function hugText(
   input: HTMLElement | NodeList | HTMLCollection | HTMLElement[],
 ) {
   if (!input) {

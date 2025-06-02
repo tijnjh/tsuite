@@ -1,4 +1,4 @@
-import { tryCatch } from "..";
+import { tryCatch } from "easy-try-catch";
 
 type EffetchOptions = RequestInit & {
   /** Primarily for SvelteKit's load function */
@@ -6,17 +6,16 @@ type EffetchOptions = RequestInit & {
   responseType?: "json" | "text";
 };
 
-async function effetch<T>(
+export async function effetch<T>(
   input: RequestInfo | URL,
-  init?: EffetchOptions & { responseType?: "json" }
+  init?: EffetchOptions & { responseType?: "json" },
 ): Promise<T>;
-async function effetch(
+export async function effetch(
   input: RequestInfo | URL,
-  init: EffetchOptions & { responseType: "text" }
+  init: EffetchOptions & { responseType: "text" },
 ): Promise<string>;
 
 /**
- *
  * Effective fetch
  *
  * Sends the request and returns the response as parsed JSON (or text).
@@ -25,37 +24,37 @@ async function effetch(
  * @returns A promise that resolves to the parsed JSON or text data
  * @throws If the fetch request fails or if the JSON parsing fails
  */
-async function effetch<T>(
+export async function effetch<T>(
   input: RequestInfo | URL,
-  init?: EffetchOptions
+  init?: EffetchOptions,
 ): Promise<string | T> {
   const fetchFunction = init?.event?.fetch || fetch;
 
-  const [res, err] = await tryCatch(fetchFunction(input, init));
+  const res = await tryCatch(fetchFunction(input, init));
 
-  if (err) {
-    throw new Error(`Failed to fetch: ${err}`);
+  if (res.error) {
+    throw new Error(`Failed to fetch: ${res.error}`);
   }
 
-  if (!res) {
+  if (!res.data) {
     throw new Error("Request sending failed unexpectedly.");
   }
 
-  if (!res.ok) {
-    throw new Error(`HTTP error! status: ${res?.status} ${res?.statusText}`);
+  if (!res.data.ok) {
+    throw new Error(
+      `HTTP error! status: ${res.data?.status} ${res.data?.statusText}`,
+    );
   }
 
   if (init?.responseType === "text") {
-    return res.text();
+    return res.data.text();
   }
 
-  const [parseRes, parseErr] = await tryCatch(res.json());
+  const parse = await tryCatch(res.data.json());
 
-  if (parseErr) {
-    throw new Error(`Failed to parse JSON: ${parseErr}`);
+  if (parse.error) {
+    throw new Error(`Failed to parse JSON: ${parse.error}`);
   }
 
-  return parseRes as T;
+  return parse.data as T;
 }
-
-export default effetch;
