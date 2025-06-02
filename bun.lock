@@ -3,6 +3,9 @@
   "workspaces": {
     "": {
       "name": "tsuite",
+      "dependencies": {
+        "easy-try-catch": "^0.2.0",
+      },
       "devDependencies": {
         "@types/node": "^22.14.1",
         "csstype": "^3.1.3",
@@ -109,6 +112,8 @@
     "diff": ["diff@8.0.2", "", {}, "sha512-sSuxWU5j5SR9QQji/o2qMvqRNYRDOcBTgsJ/DeCf4iSN4gW+gNMXM7wFIP+fdXZxoNiAnHUTGjCr+TSWXdRDKg=="],
 
     "dts-resolver": ["dts-resolver@2.1.0", "", { "peerDependencies": { "oxc-resolver": ">=11.0.0" }, "optionalPeers": ["oxc-resolver"] }, "sha512-bgBo2md8jS5V11Rfhw23piIxJDEEDAnQ8hzh+jwKjX50P424IQhiZVVwyEe/n6vPWgEIe3NKrlRUyLMK9u0kaQ=="],
+
+    "easy-try-catch": ["easy-try-catch@0.2.0", "", {}, "sha512-ZVFFJj/q2okP+7LjYpLEZTKcmcMuDRbEQ/T7v3B8HQ4mBlIN3DDnRfQ4MT9rsaGLzdVeZd604r+bxqKr2obfag=="],
 
     "empathic": ["empathic@1.1.0", "", {}, "sha512-rsPft6CK3eHtrlp9Y5ALBb+hfK+DWnA4WFebbazxjWyx8vSm3rZeoM3z9irsjcqO3PYRzlfv27XIB4tz2DV7RA=="],
 

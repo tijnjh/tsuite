@@ -49,5 +49,8 @@
     "./load-image-with-fallback": "./dist/load-image-with-fallback.mjs",
     "./map-elements-by-id": "./dist/map-elements-by-id.mjs",
     "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "easy-try-catch": "^0.2.0"
   }
 }
