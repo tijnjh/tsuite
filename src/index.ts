@@ -5,3 +5,5 @@ export { effetch } from "./effetch";
 export { mapElementsById } from "./map-elements-by-id";
 export { hugText } from "./hug-text";
 export { loadImageWithFallback } from "./load-image-with-fallback";
+
+export type * from "./type-helpers";
