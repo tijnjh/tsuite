@@ -1,34 +1,7 @@
 {
   "name": "tsuite",
-  "version": "0.7.0",
-  "author": "tijnjh",
-  "repository": "tijnjh/tsuite",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
-  "devDependencies": {
-    "@types/node": "^22.14.1",
-    "csstype": "^3.1.3",
-    "tsdown": "^0.12.6",
-    "tslib": "^2.8.1",
-    "typedoc": "^0.28.3",
-    "typescript": "^5.8.3"
-  },
-  "exports": {
-    ".": "./dist/index.js",
-    "./create-node": "./dist/create-node.js",
-    "./create-request": "./dist/create-request.js",
-    "./create-state": "./dist/create-state.js",
-    "./effetch": "./dist/effetch.js",
-    "./hug-text": "./dist/hug-text.js",
-    "./load-image-with-fallback": "./dist/load-image-with-fallback.js",
-    "./map-elements-by-id": "./dist/map-elements-by-id.js",
-    "./package.json": "./package.json"
-  },
+  "version": "0.7.1",
   "description": "A collection of useful utility functions, All fully typed and documented",
-  "files": [
-    "dist"
-  ],
-  "homepage": "https://tijnjh.github.io/tsuite",
   "keywords": [
     "typescript",
     "utility",
@@ -44,17 +17,44 @@
     "image",
     "fallback"
   ],
-  "license": "AGPL-3.0-only",
-  "private": false,
+  "homepage": "https://tijnjh.github.io/tsuite",
+  "repository": "tijnjh/tsuite",
+  "license": "MPL-2.0",
+  "author": "tijnjh",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./create-node": "./dist/create-node.js",
+    "./create-request": "./dist/create-request.js",
+    "./create-state": "./dist/create-state.js",
+    "./effetch": "./dist/effetch.js",
+    "./hug-text": "./dist/hug-text.js",
+    "./load-image-with-fallback": "./dist/load-image-with-fallback.js",
+    "./map-elements-by-id": "./dist/map-elements-by-id.js",
+    "./type-helpers": "./dist/type-helpers.js",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "dev": "tsdown --watch",
     "build": "tsdown --clean",
     "build:docs": "typedoc",
+    "dev": "tsdown --watch",
     "fmt": "bun x prettier --write ."
   },
-  "type": "module",
-  "types": "./dist/index.d.ts",
   "dependencies": {
-    "typecatch": "^0.2.1"
+    "typecatch": "^0.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.31",
+    "csstype": "^3.1.3",
+    "tsdown": "^0.12.7",
+    "tslib": "^2.8.1",
+    "typedoc": "^0.28.5",
+    "typescript": "^5.8.3"
   }
 }
