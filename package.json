@@ -1,13 +1,11 @@
 {
   "name": "tsuite",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "description": "A collection of useful utility functions, All fully typed and documented",
   "keywords": [
     "typescript",
     "utility",
     "functions",
-    "try-catch",
-    "error-handling",
     "dom",
     "elements",
     "state",
@@ -19,7 +17,7 @@
   ],
   "homepage": "https://tijnjh.github.io/tsuite",
   "repository": "tijnjh/tsuite",
-  "license": "MPL-2.0",
+  "license": "MIT",
   "author": "tijnjh",
   "type": "module",
   "exports": {

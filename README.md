@@ -30,9 +30,9 @@ npm i tsuite
 Import individual utilities for optimal tree-shaking:
 
 ```typescript
-import { tryCatch } from "tsuite";
+import { effetch } from "tsuite";
 // or
-import tryCatch from "tsuite/try-catch";
+import effetch from "tsuite/effetch";
 ```
 
 ---
